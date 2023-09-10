@@ -35,10 +35,10 @@ class TicketUpdateNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->greeting("Hello, {$notifiable->name}")
-                    ->line('Ticket status is updated.')
-                    ->line("Comment Admin: {$notifiable->comment}")
-                    ->line('Thank you for using our application!');
+            ->greeting("Hello, {$notifiable->name}")
+            ->line('Ticket status is updated.')
+            ->line("Comment Admin: {$notifiable->comment}")
+            ->line('Thank you for using our application!');
     }
 
     /**

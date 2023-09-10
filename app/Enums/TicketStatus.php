@@ -10,6 +10,7 @@ enum TicketStatus: string
     public static function randomValue(): string
     {
         $statusArray = array_column(self::cases(), 'value');
+
         return $statusArray[array_rand($statusArray)];
     }
 }

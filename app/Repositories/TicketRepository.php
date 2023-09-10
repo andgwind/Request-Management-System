@@ -25,12 +25,13 @@ class TicketRepository
         return Ticket::create($ticket);
     }
 
-    public function update(string $comment, Ticket $ticket)
+    public function update(string $comment, Ticket $ticket): ?Ticket
     {
         $ticket->update([
             'status' => TicketStatus::ACTIVE,
             'comment' => $comment,
         ]);
+
         return $ticket->fresh();
     }
 }

@@ -10,7 +10,6 @@ use App\Http\Resources\TicketResource;
 use App\Models\Ticket;
 use App\Services\TicketService;
 
-
 class TicketController extends Controller
 {
     protected TicketService $ticketService;
@@ -24,8 +23,7 @@ class TicketController extends Controller
     {
         $status = $request->input('status');
 
-        if (isset($status))
-        {
+        if (isset($status)) {
             $tickets = $this->ticketService->getIndexByStatus($status);
 
         } else {
@@ -35,17 +33,19 @@ class TicketController extends Controller
         return new TicketCollection($tickets);
     }
 
-    public function store(StoreTicketRequest $request)
+    public function store(StoreTicketRequest $request): TicketResource
     {
         $ticket = $request->all();
         $ticket = $this->ticketService->store($ticket);
+
         return new TicketResource($ticket);
     }
 
-    public function update(UpdateTicketRequest $request, Ticket $ticket)
+    public function update(UpdateTicketRequest $request, Ticket $ticket): TicketResource
     {
         $comment = $request->input('comment');
         $updatedTicket = $this->ticketService->update($comment, $ticket);
+
         return new TicketResource($updatedTicket);
     }
 }
