@@ -1,0 +1,223 @@
+{
+    "info": {
+        "_postman_id": "f22e0f5f-b57b-43bd-94f7-ac8415d29a63",
+        "name": "MassProjectTicket",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "21147218"
+    },
+    "item": [
+        {
+            "name": "Ticket",
+            "item": [
+                {
+                    "name": "Index",
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "test@gmail.com",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/tickets",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "tickets"
+                            ]
+                        },
+                        "description": "**Получение заявок ответственным лицом**"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GetIndexByStatus",
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "test@gmail.com",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/tickets?status=Active",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "tickets"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "Active"
+                                }
+                            ]
+                        },
+                        "description": "**Получение заявок ответственным лицом с фильтрацией по статусу и дате**"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Put",
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "test@gmail.com",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/vnd.api+json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/vnd.api+json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"comment\": \"Hello it's me2\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/tickets/1",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "tickets",
+                                "1"
+                            ]
+                        },
+                        "description": "**Ответ на конкретную задачу ответственным лицом**"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/vnd.api+json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/vnd.api+json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"mio\",\r\n    \"email\": \"mio@mail.ru\",\r\n    \"message\": \"can u help me?\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/tickets",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "tickets"
+                            ],
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "mio",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "mio@mail.ru",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "Hello, can u help me",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Отправка заявки пользователями системы"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "url",
+            "value": "http://localhost:8000/api/v1",
+            "type": "string"
+        }
+    ]
+}
