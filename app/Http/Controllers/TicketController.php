@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IndexTicketRequest;
+use App\Http\Requests\StoreTicketRequest;
 use App\Http\Resources\TicketCollection;
+use App\Http\Resources\TicketResource;
 use App\Services\TicketService;
 
 
@@ -29,5 +31,12 @@ class TicketController extends Controller
         }
 
         return new TicketCollection($tickets);
+    }
+
+    public function store(StoreTicketRequest $request)
+    {
+        $ticket = $request->all();
+        $ticket = $this->ticketService->store($ticket);
+        return new TicketResource($ticket);
     }
 }

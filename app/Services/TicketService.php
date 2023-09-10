@@ -23,4 +23,9 @@ class TicketService
     {
         return $this->ticketRepository->getIndexByStatus($status);
     }
+
+    public function store(array $ticket)
+    {
+        return $this->ticketRepository->store($ticket);
+    }
 }

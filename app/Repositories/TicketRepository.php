@@ -18,4 +18,9 @@ class TicketRepository
             ->orderByDesc('created_at')
             ->paginate();
     }
+
+    public function store(array $ticket)
+    {
+        return Ticket::create($ticket);
+    }
 }

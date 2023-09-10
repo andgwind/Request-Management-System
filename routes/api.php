@@ -19,5 +19,6 @@ Route::prefix('v1')->group(function (){
     Route::middleware('auth.basic')->group(function (){
         Route::get('/tickets', [TicketController::class, 'index']);
     });
+    Route::post('/tickets', [TicketController::class, 'store']);
 });
 
