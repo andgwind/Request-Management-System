@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IndexTicketRequest;
 use App\Http\Requests\StoreTicketRequest;
+use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Resources\TicketCollection;
 use App\Http\Resources\TicketResource;
+use App\Models\Ticket;
 use App\Services\TicketService;
 
 
@@ -38,5 +40,12 @@ class TicketController extends Controller
         $ticket = $request->all();
         $ticket = $this->ticketService->store($ticket);
         return new TicketResource($ticket);
+    }
+
+    public function update(UpdateTicketRequest $request, Ticket $ticket)
+    {
+        $comment = $request->input('comment');
+        $updatedTicket = $this->ticketService->update($comment, $ticket);
+        return new TicketResource($updatedTicket);
     }
 }

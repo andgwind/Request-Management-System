@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Ticket;
+use App\Notifications\TicketUpdateNotification;
 use App\Repositories\TicketRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -27,5 +29,17 @@ class TicketService
     public function store(array $ticket)
     {
         return $this->ticketRepository->store($ticket);
+    }
+
+    public function update(string $comment, Ticket $ticket)
+    {
+        $updatedTicket = $this->ticketRepository->update($comment, $ticket);
+        $this->sendEmailNotification($updatedTicket);
+        return $updatedTicket;
+    }
+
+    public function sendEmailNotification(Ticket $ticket)
+    {
+        $ticket->notify(new TicketUpdateNotification());
     }
 }

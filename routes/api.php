@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function (){
     Route::middleware('auth.basic')->group(function (){
         Route::get('/tickets', [TicketController::class, 'index']);
+        Route::put('/tickets/{ticket}', [TicketController::class, 'update']);
     });
     Route::post('/tickets', [TicketController::class, 'store']);
 });
